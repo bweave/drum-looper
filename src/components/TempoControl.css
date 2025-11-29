@@ -1,0 +1,22 @@
+.tempo-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tempo-control label {
+  font-weight: 500;
+  color: #ddd;
+}
+
+.tempo-slider {
+  width: 150px;
+  cursor: pointer;
+}
+
+.tempo-value {
+  min-width: 70px;
+  color: #4CAF50;
+  font-weight: 600;
+  font-size: 14px;
+}
