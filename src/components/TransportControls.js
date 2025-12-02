@@ -2,12 +2,6 @@ import React from 'react';
 import './TransportControls.css';
 
 function TransportControls({ isPlaying, onPlay, onStop, onReset }) {
-  const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset the entire pattern? This cannot be undone.')) {
-      onReset();
-    }
-  };
-
   return (
     <div className="transport-controls">
       <button
@@ -26,7 +20,7 @@ function TransportControls({ isPlaying, onPlay, onStop, onReset }) {
       </button>
       <button
         className="transport-button reset-button"
-        onClick={handleReset}
+        onClick={onReset}
       >
         ↺ Clear
       </button>

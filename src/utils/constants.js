@@ -38,7 +38,7 @@ export const SUBDIVISION_LABELS = {
   [SUBDIVISIONS.THIRTYSECOND]: '32nd Notes'
 };
 
-export const DEFAULT_TEMPO = 120;
+export const DEFAULT_TEMPO = 96;
 export const MIN_TEMPO = 40;
 export const MAX_TEMPO = 240;
 export const DEFAULT_VELOCITY = 0.7;

@@ -3,7 +3,7 @@ import DrumGrid from './components/DrumGrid';
 import Controls from './components/Controls';
 import SheetMusic from './components/SheetMusic';
 import { SUBDIVISIONS, DEFAULT_TEMPO, MIN_BARS } from './utils/constants';
-import { getTotalSteps, createEmptyGrid, resizeGrid } from './utils/gridHelpers';
+import { getTotalSteps, createEmptyGrid, createDefaultBeatGrid, resizeGrid } from './utils/gridHelpers';
 import { useAudioEngine } from './hooks/useAudioEngine';
 import './App.css';
 
@@ -15,7 +15,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const totalSteps = getTotalSteps(bars, subdivision);
-  const [grid, setGrid] = useState(() => createEmptyGrid(totalSteps));
+  const [grid, setGrid] = useState(() => createDefaultBeatGrid());
   const gridRef = useRef(grid);
 
   const { initializeAudio, startPlayback, stopPlayback, updateTempo } = useAudioEngine();

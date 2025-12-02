@@ -49,3 +49,24 @@ export const getToneSubdivision = (subdivision) => {
   };
   return toneMap[subdivision] || '16n';
 };
+
+export const createDefaultBeatGrid = () => {
+  const grid = createEmptyGrid(16);
+
+  // Hi-hat on 8th notes (every other 16th note: 0, 2, 4, 6, 8, 10, 12, 14)
+  [0, 2, 4, 6, 8, 10, 12, 14].forEach(step => {
+    grid.hihat[step] = { active: true, velocity: DEFAULT_VELOCITY };
+  });
+
+  // Snare on beats 2 and 4 (steps 4 and 12 in 16th notes)
+  [4, 12].forEach(step => {
+    grid.snare[step] = { active: true, velocity: DEFAULT_VELOCITY };
+  });
+
+  // Kick on beat 1, beat 3, and the & of 3 (steps 0, 8, and 10)
+  [0, 8, 10].forEach(step => {
+    grid.kick[step] = { active: true, velocity: DEFAULT_VELOCITY };
+  });
+
+  return grid;
+};
