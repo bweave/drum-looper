@@ -5,19 +5,32 @@ import SheetMusic from './components/SheetMusic';
 import { SUBDIVISIONS, DEFAULT_TEMPO, MIN_BARS } from './utils/constants';
 import { getTotalSteps, createEmptyGrid, createDefaultBeatGrid, resizeGrid } from './utils/gridHelpers';
 import { getPatterns, savePattern, deletePattern, loadPattern } from './utils/patternStorage';
+import { encodePattern, decodePattern, getPatternFromURL, setPatternInURL, copyURLToClipboard } from './utils/patternEncoder';
 import { useAudioEngine } from './hooks/useAudioEngine';
 import './App.css';
 
+// Parse URL pattern once at module load
+const initialURLPattern = (() => {
+  const urlPattern = getPatternFromURL();
+  if (urlPattern) {
+    return decodePattern(urlPattern);
+  }
+  return null;
+})();
+
 function App() {
-  const [bars, setBars] = useState(MIN_BARS);
-  const [subdivision, setSubdivision] = useState(SUBDIVISIONS.SIXTEENTH);
-  const [tempo, setTempo] = useState(DEFAULT_TEMPO);
+  const [bars, setBars] = useState(initialURLPattern?.bars ?? MIN_BARS);
+  const [subdivision, setSubdivision] = useState(initialURLPattern?.subdivision ?? SUBDIVISIONS.SIXTEENTH);
+  const [tempo, setTempo] = useState(initialURLPattern?.tempo ?? DEFAULT_TEMPO);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [savedPatterns, setSavedPatterns] = useState(() => getPatterns());
+  const [shareMessage, setShareMessage] = useState('');
 
   const totalSteps = getTotalSteps(bars, subdivision);
-  const [grid, setGrid] = useState(() => createDefaultBeatGrid());
+
+  // Initialize grid from URL or default beat
+  const [grid, setGrid] = useState(() => initialURLPattern?.grid ?? createDefaultBeatGrid());
   const gridRef = useRef(grid);
 
   const { initializeAudio, startPlayback, stopPlayback, updateTempo } = useAudioEngine();
@@ -140,6 +153,27 @@ function App() {
     setSavedPatterns(updated);
   };
 
+  const handleShare = async () => {
+    const patternData = {
+      grid,
+      tempo,
+      bars,
+      subdivision
+    };
+    const encoded = encodePattern(patternData);
+    setPatternInURL(encoded);
+
+    const copied = await copyURLToClipboard();
+    if (copied) {
+      setShareMessage('Link copied to clipboard!');
+    } else {
+      setShareMessage('URL updated - copy from address bar');
+    }
+
+    // Clear message after 3 seconds
+    setTimeout(() => setShareMessage(''), 3000);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -148,6 +182,9 @@ function App() {
       </header>
 
       <main className="App-main">
+        {shareMessage && (
+          <div className="share-toast">{shareMessage}</div>
+        )}
         <Controls
           isPlaying={isPlaying}
           tempo={tempo}
@@ -158,6 +195,7 @@ function App() {
           onStop={handleStop}
           onReset={handleReset}
           onSave={handleSavePattern}
+          onShare={handleShare}
           onLoad={handleLoadPattern}
           onDeletePattern={handleDeletePattern}
           onTempoChange={setTempo}

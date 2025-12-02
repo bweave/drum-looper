@@ -35,3 +35,17 @@
   margin: 0 auto;
   padding: 24px 24px 60px;
 }
+
+.share-toast {
+  background: var(--accent-secondary);
+  color: var(--primary-dark);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 16px;
+  animation: toast-fade-in 0.2s ease;
+}

@@ -72,3 +72,12 @@
   background: var(--accent-secondary);
   color: var(--primary-dark);
 }
+
+.share-button {
+  background: var(--panel-medium);
+}
+
+.share-button:hover {
+  background: var(--accent-secondary);
+  color: var(--primary-dark);
+}

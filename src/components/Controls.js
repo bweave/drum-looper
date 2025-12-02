@@ -15,6 +15,7 @@ function Controls({
   onStop,
   onReset,
   onSave,
+  onShare,
   onLoad,
   onDeletePattern,
   onTempoChange,
@@ -30,6 +31,7 @@ function Controls({
           onStop={onStop}
           onReset={onReset}
           onSave={onSave}
+          onShare={onShare}
           patterns={patterns}
           onLoad={onLoad}
           onDeletePattern={onDeletePattern}

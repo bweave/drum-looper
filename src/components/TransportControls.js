@@ -2,7 +2,7 @@ import React from 'react';
 import PatternSelector from './PatternSelector';
 import './TransportControls.css';
 
-function TransportControls({ isPlaying, onPlay, onStop, onReset, onSave, patterns, onLoad, onDeletePattern }) {
+function TransportControls({ isPlaying, onPlay, onStop, onReset, onSave, onShare, patterns, onLoad, onDeletePattern }) {
   const handleSave = () => {
     const name = window.prompt('Enter a name for this pattern:');
     if (name && name.trim()) {
@@ -37,6 +37,12 @@ function TransportControls({ isPlaying, onPlay, onStop, onReset, onSave, pattern
         onClick={handleSave}
       >
         💾 Save
+      </button>
+      <button
+        className="transport-button share-button"
+        onClick={onShare}
+      >
+        🔗 Share
       </button>
       <PatternSelector
         patterns={patterns}
