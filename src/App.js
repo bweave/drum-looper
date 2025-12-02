@@ -4,6 +4,7 @@ import Controls from './components/Controls';
 import SheetMusic from './components/SheetMusic';
 import { SUBDIVISIONS, DEFAULT_TEMPO, MIN_BARS } from './utils/constants';
 import { getTotalSteps, createEmptyGrid, createDefaultBeatGrid, resizeGrid } from './utils/gridHelpers';
+import { getPatterns, savePattern, deletePattern, loadPattern } from './utils/patternStorage';
 import { useAudioEngine } from './hooks/useAudioEngine';
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
   const [tempo, setTempo] = useState(DEFAULT_TEMPO);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [savedPatterns, setSavedPatterns] = useState(() => getPatterns());
 
   const totalSteps = getTotalSteps(bars, subdivision);
   const [grid, setGrid] = useState(() => createDefaultBeatGrid());
@@ -108,6 +110,36 @@ function App() {
     setSubdivision(newSubdivision);
   };
 
+  const handleSavePattern = (name) => {
+    const patternData = {
+      grid,
+      bars,
+      subdivision,
+      tempo
+    };
+    const updated = savePattern(name, patternData);
+    setSavedPatterns(updated);
+  };
+
+  const handleLoadPattern = (name) => {
+    const patternData = loadPattern(name);
+    if (patternData) {
+      if (isPlaying) {
+        handleStop();
+      }
+      setBars(patternData.bars);
+      setSubdivision(patternData.subdivision);
+      setTempo(patternData.tempo);
+      setGrid(patternData.grid);
+      setCurrentStep(0);
+    }
+  };
+
+  const handleDeletePattern = (name) => {
+    const updated = deletePattern(name);
+    setSavedPatterns(updated);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -121,9 +153,13 @@ function App() {
           tempo={tempo}
           bars={bars}
           subdivision={subdivision}
+          patterns={savedPatterns}
           onPlay={handlePlay}
           onStop={handleStop}
           onReset={handleReset}
+          onSave={handleSavePattern}
+          onLoad={handleLoadPattern}
+          onDeletePattern={handleDeletePattern}
           onTempoChange={setTempo}
           onBarsChange={handleBarsChange}
           onSubdivisionChange={handleSubdivisionChange}

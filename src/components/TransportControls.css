@@ -44,3 +44,12 @@
 .reset-button:hover {
   background-color: #ffa726;
 }
+
+.save-button {
+  background-color: #2196F3;
+  color: white;
+}
+
+.save-button:hover {
+  background-color: #42a5f5;
+}

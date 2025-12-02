@@ -10,9 +10,13 @@ function Controls({
   tempo,
   bars,
   subdivision,
+  patterns,
   onPlay,
   onStop,
   onReset,
+  onSave,
+  onLoad,
+  onDeletePattern,
   onTempoChange,
   onBarsChange,
   onSubdivisionChange
@@ -25,6 +29,10 @@ function Controls({
           onPlay={onPlay}
           onStop={onStop}
           onReset={onReset}
+          onSave={onSave}
+          patterns={patterns}
+          onLoad={onLoad}
+          onDeletePattern={onDeletePattern}
         />
         <TempoControl tempo={tempo} onChange={onTempoChange} />
       </div>
