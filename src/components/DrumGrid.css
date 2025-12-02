@@ -4,4 +4,23 @@
   border-radius: var(--radius-lg);
   margin: 20px 0;
   box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.05);
+  overflow-x: auto;
+}
+
+.drum-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.drum-grid::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+  border-radius: 4px;
+}
+
+.drum-grid::-webkit-scrollbar-thumb {
+  background: var(--panel-medium);
+  border-radius: 4px;
+}
+
+.drum-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
