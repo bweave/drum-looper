@@ -1,21 +1,21 @@
 .sheet-music-container {
   width: 100%;
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #1a1a1a;
-  border-radius: 8px;
-  border: 1px solid #333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  padding: 20px 24px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--panel-dark);
+  box-shadow: var(--shadow-md);
 }
 
 .sheet-music-title {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 15px 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 900;
+  margin: 0 0 16px 0;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.15em;
 }
 
 .sheet-music-content {
@@ -23,10 +23,11 @@
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  background-color: #fafafa;
-  border-radius: 4px;
-  padding: 15px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  padding: 16px;
   min-height: 150px;
+  border: 2px solid var(--border-default);
 }
 
 .sheet-music-svg {
@@ -40,17 +41,16 @@
 }
 
 .sheet-music-content::-webkit-scrollbar-track {
-  background: #e0e0e0;
-  border-radius: 4px;
+  background: var(--bg-tertiary);
 }
 
 .sheet-music-content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+  background: var(--border-default);
+  border-radius: 2px;
 }
 
 .sheet-music-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--text-muted);
 }
 
 .current-note-highlight {
@@ -62,11 +62,12 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background-color: #ff4444;
+  width: 3px;
+  background: var(--accent);
   opacity: 0.9;
   pointer-events: none;
   z-index: 10;
   display: none;
-  box-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+  box-shadow: 0 0 10px var(--accent-glow);
+  border-radius: 1px;
 }

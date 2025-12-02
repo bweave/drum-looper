@@ -1,16 +1,16 @@
 .controls {
-  background-color: #0a0a0a;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  margin: 20px 0;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  background: var(--panel-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .controls-row {
   display: flex;
-  gap: 30px;
+  gap: 24px;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
 }
 

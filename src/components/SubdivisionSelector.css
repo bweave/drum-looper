@@ -1,38 +1,52 @@
 .subdivision-selector {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .subdivision-selector label {
-  font-weight: 500;
-  color: #ddd;
+  font-weight: 900;
+  font-size: 10px;
+  color: var(--bg-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .subdivision-buttons {
   display: flex;
-  gap: 5px;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
 .subdivision-button {
-  padding: 8px 16px;
-  background-color: #1a1a1a;
-  color: #ddd;
-  border: 1px solid #444;
-  border-radius: 4px;
+  padding: 8px 12px;
+  background: var(--panel-medium);
+  color: var(--bg-tertiary);
+  border: none;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
+  font-size: 10px;
+  font-weight: 900;
+  transition: all 0.1s ease;
+  box-shadow: 0 2px 0 var(--primary-dark);
+  position: relative;
+  top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .subdivision-button:hover {
-  background-color: #222;
-  border-color: #666;
+  background: var(--primary-light);
+  color: var(--bg-primary);
+}
+
+.subdivision-button:active {
+  top: 2px;
+  box-shadow: none;
 }
 
 .subdivision-button.active {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
-  color: #fff;
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 2px 0 #cc4a1a, 0 0 10px var(--accent-glow);
 }

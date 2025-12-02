@@ -3,88 +3,108 @@
 }
 
 .pattern-selector-button {
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 10px 18px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
-  background-color: #9c27b0;
-  color: white;
+  transition: all 0.1s ease;
+  background: var(--panel-medium);
+  color: var(--bg-tertiary);
+  box-shadow: 0 3px 0 var(--primary-dark), var(--shadow-sm);
   display: flex;
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
   line-height: 1.4;
+  position: relative;
+  top: 0;
 }
 
 .pattern-selector-button:hover {
-  background-color: #ab47bc;
+  background: var(--primary-light);
+  color: var(--bg-primary);
+}
+
+.pattern-selector-button:active {
+  top: 2px;
+  box-shadow: 0 1px 0 var(--primary-dark);
 }
 
 .dropdown-arrow {
   font-size: 10px;
+  opacity: 0.7;
 }
 
 .pattern-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 4px;
-  background-color: #2a2a2a;
-  border: 1px solid #444;
-  border-radius: 4px;
+  margin-top: 8px;
+  background: var(--panel-dark);
+  border: 2px solid var(--panel-medium);
+  border-radius: var(--radius-md);
   min-width: 200px;
-  max-height: 300px;
+  max-height: 280px;
   overflow-y: auto;
   z-index: 100;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 .pattern-dropdown-empty {
-  padding: 12px 16px;
-  color: #888;
+  padding: 16px 20px;
+  color: var(--text-muted);
   font-style: italic;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .pattern-dropdown-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 12px;
+  padding: 10px 14px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.1s ease;
+  border-bottom: 1px solid var(--panel-medium);
+}
+
+.pattern-dropdown-item:last-child {
+  border-bottom: none;
 }
 
 .pattern-dropdown-item:hover {
-  background-color: #3a3a3a;
+  background: var(--panel-medium);
 }
 
 .pattern-dropdown-name {
-  font-size: 13px;
-  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bg-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .pattern-dropdown-delete {
-  background-color: transparent;
+  background: transparent;
   border: none;
-  color: #666;
-  font-size: 18px;
+  color: var(--text-muted);
+  font-size: 16px;
   cursor: pointer;
-  padding: 2px 6px;
+  padding: 4px 8px;
   line-height: 1;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   transition: all 0.15s ease;
   margin-left: 8px;
 }
 
 .pattern-dropdown-delete:hover {
-  background-color: #f44336;
+  background: var(--danger);
   color: white;
 }

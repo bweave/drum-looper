@@ -1,22 +1,55 @@
 .tempo-control {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .tempo-control label {
-  font-weight: 500;
-  color: #ddd;
+  font-weight: 900;
+  font-size: 10px;
+  color: var(--bg-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .tempo-slider {
-  width: 150px;
+  width: 100px;
   cursor: pointer;
+  height: 8px;
+  -webkit-appearance: none;
+  background: var(--primary-dark);
+  border-radius: 4px;
+  outline: none;
+  box-shadow: var(--shadow-inset);
+}
+
+.tempo-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
+  border: 2px solid var(--panel-medium);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: transform 0.1s ease;
+}
+
+.tempo-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
 }
 
 .tempo-value {
-  min-width: 70px;
-  color: #4CAF50;
-  font-weight: 600;
-  font-size: 14px;
+  min-width: 75px;
+  padding: 6px 12px;
+  background: #1a1510;
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 10px var(--accent-glow);
+  box-shadow: var(--shadow-inset);
+  letter-spacing: 0.05em;
 }

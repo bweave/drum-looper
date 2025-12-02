@@ -1,44 +1,56 @@
 .grid-cell {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #444;
-  background-color: #1a1a1a;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--primary-dark);
+  border-radius: 50%;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.08s ease;
   position: relative;
+  box-shadow: var(--shadow-inset), 0 1px 0 rgba(255,255,255,0.1);
 }
 
 .grid-cell:not(.active):hover {
-  border-color: #666;
-  background-color: #222;
+  background: var(--panel-medium);
+  box-shadow: var(--shadow-inset);
 }
 
 .grid-cell.active {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
+  background: radial-gradient(circle at 30% 30%, var(--accent-light) 0%, var(--accent) 60%, #cc4a1a 100%);
+  box-shadow: 0 0 12px var(--accent-glow), 0 0 24px var(--accent-glow), inset 0 -2px 4px rgba(0,0,0,0.3);
 }
 
+/* Regular velocity - medium orange */
 .grid-cell.active.regular {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
+  background: radial-gradient(circle at 30% 30%, #ff8c5a 0%, #e85d26 60%, #b84a1e 100%);
+  box-shadow: 0 0 10px rgba(232, 93, 38, 0.4), 0 0 20px rgba(232, 93, 38, 0.2), inset 0 -2px 4px rgba(0,0,0,0.3);
 }
 
+/* Accent velocity - bright, intense orange */
 .grid-cell.active.accent {
-  background-color: #66BB6A;
-  border-color: #66BB6A;
+  background: radial-gradient(circle at 30% 30%, #ffb088 0%, #ff6b35 60%, #e54e18 100%);
+  box-shadow: 0 0 15px rgba(255, 107, 53, 0.6), 0 0 30px rgba(255, 107, 53, 0.4), inset 0 -2px 4px rgba(0,0,0,0.3);
 }
 
+/* Ghost velocity - dim, muted orange */
 .grid-cell.active.ghost {
-  background-color: #2E7D32;
-  border-color: #2E7D32;
+  background: radial-gradient(circle at 30% 30%, #a06040 0%, #7a4530 60%, #5c3525 100%);
+  box-shadow: 0 0 6px rgba(122, 69, 48, 0.3), inset 0 -2px 4px rgba(0,0,0,0.3);
 }
 
 .grid-cell.current-step {
-  border: 2px solid #ff9800;
-  box-shadow: 0 0 8px rgba(255, 152, 0, 0.6);
+  box-shadow: 0 0 0 3px var(--accent), 0 0 15px var(--accent-glow);
 }
 
 .grid-cell.current-step.active {
-  border-color: #ff9800;
-  box-shadow: 0 0 12px rgba(255, 152, 0, 0.8);
+  box-shadow: 0 0 0 3px var(--accent-secondary), 0 0 20px var(--accent-glow), 0 0 30px var(--accent-glow), inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+/* Beat markers - every 4th step */
+.grid-cell.beat-start {
+  margin-left: 8px;
+}
+
+.grid-cell.beat-start:first-child {
+  margin-left: 0;
 }
