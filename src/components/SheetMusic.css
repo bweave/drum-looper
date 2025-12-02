@@ -1,0 +1,72 @@
+.sheet-music-container {
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sheet-music-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sheet-music-content {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #fafafa;
+  border-radius: 4px;
+  padding: 15px;
+  min-height: 150px;
+}
+
+.sheet-music-svg {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sheet-music-content::-webkit-scrollbar {
+  height: 8px;
+}
+
+.sheet-music-content::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.sheet-music-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.sheet-music-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.current-note-highlight {
+  pointer-events: none;
+  transition: all 0.05s ease-out;
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #ff4444;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 10;
+  display: none;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+}

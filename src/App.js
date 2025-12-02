@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import DrumGrid from './components/DrumGrid';
 import Controls from './components/Controls';
+import SheetMusic from './components/SheetMusic';
 import { SUBDIVISIONS, DEFAULT_TEMPO, MIN_BARS } from './utils/constants';
 import { getTotalSteps, createEmptyGrid, resizeGrid } from './utils/gridHelpers';
 import { useAudioEngine } from './hooks/useAudioEngine';
@@ -131,6 +132,12 @@ function App() {
           grid={grid}
           currentStep={currentStep}
           onToggle={toggleCell}
+        />
+        <SheetMusic
+          grid={grid}
+          subdivision={subdivision}
+          bars={bars}
+          currentStep={currentStep}
         />
       </main>
     </div>
